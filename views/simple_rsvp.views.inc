@@ -54,7 +54,7 @@ function simple_rsvp_views_data() {
                   'click sortable' => TRUE,
                   ),
                'filter' => array(
-                  'handler' => 'views_handler_filter_numeric',
+                  'handler' => 'simple_rsvp_filter_handler_oid',
                   ),
                ),
            ),
