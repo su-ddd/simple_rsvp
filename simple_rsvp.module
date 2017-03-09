@@ -47,29 +47,6 @@ function simple_rsvp_block_view($delta = '') {
           	$block_content .= drupal_render($rsvp_form);        }
 
 
-/*        if ($state == REGISTERED) {
-          $block_content .= "<p>You are currently <strong>registered</strong>. If you can no longer attend, please cancel your registration so others have a chance to attend.</p>";
-          $block_content .= drupal_render(drupal_get_form('simple_registration_cancel_form'));
-        }
-        else if ($state == WAITLISTED) {
-          $block_content .= "<p>You are now on the <strong>wait list</strong>. If a space opens up, we'll contact you.</p>";
-          $block_content .= drupal_render(drupal_get_form('simple_registration_cancel_waitlist_form'));
-        }
-        else {
-          $block_content .= "<p>You are currently <strong>not registered</strong>. ";
-          if (simple_registration_spaces_available() > 0) {
-            $block_content .= "There are still spaces left, join us!</p>";
-            $block_content .= drupal_render(drupal_get_form('simple_registration_register_form'));
-          }
-          else if (simple_registration_waitlist_spaces_available() > 0) {
-            $block_content .= "<p>The event is full, but you can join the wait list. As spaces open up, we'll automatically register people from the waiting list.</p>";
-            $block_content .= drupal_render(drupal_get_form('simple_registration_waitlist_form'));
-          }
-          else {
-            $block_content .= "<p>Unfortunately, we are at maximum capacity and the waitlist is full.</p>";
-          }
-        }
-*/
       }
       // if the user is anonymous, we'll ask them to log in before they can register.
       else {
