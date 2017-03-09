@@ -38,12 +38,11 @@ function simple_rsvp_block_view($delta = '') {
         $block_content .= "<p>Hello " . $user->name . "!</p>";
         $rsvp = simple_rsvp_user_rsvp($user->uid);
 
-        if ($rsvp) {
-          	$block_content .= "<p>Whether attending or not, you must RSVP here to be entered into the Town Hall raffle—even if you already RSVP’ed via the calendar invite. Don't miss out. Register now.</p><p>Your current RSVP is: " . simple_rsvp_option_name($rsvp) . "</p>";
+        if ($rsvp) { $block_content .= "<p>Whether attending or not, you must RSVP here to be entered into the Town Hall raffle &mdash; even if you already RSVP&rsquo;ed via the calendar invite. </p><p>Your current RSVP is: " . simple_rsvp_option_name($rsvp) . "</p>";
           	$rsvp_form = drupal_get_form('simple_rsvp_rsvp_form');
           	$block_content .= drupal_render($rsvp_form);
         } else {
-        	$block_content .= "<p>You haven't RSVP'ed yet.</p>";
+        	$block_content .= "<p>Whether attending or not, you must RSVP here to be entered into the Town Hall raffle &mdash; even if you already RSVP&rsquo;ed via the calendar invite. Don&rsquo;t miss out. Register now.</p><p>You haven&rsquo;t RSVP&rsquo;ed yet.</p>";
           	$rsvp_form = drupal_get_form('simple_rsvp_rsvp_form');
           	$block_content .= drupal_render($rsvp_form);        }
 

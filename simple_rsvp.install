@@ -13,7 +13,7 @@
  */
 
 function simple_rsvp_install() {
-  $rsvp_options = array('I will attend in person', 'I will attend remotely', 'I won\'t be able to attend');
+  $rsvp_options = array('I will attend in person', 'I will attend remotely', 'I will not be able to attend');
 
   foreach ($rsvp_options as $option) {
     db_insert('simple_rsvp_options')
