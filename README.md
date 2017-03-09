@@ -1,13 +1,14 @@
-My Module
+Simple RSVP
 
 ## Summary
 
 Authors: Marco Wise
 
-This module does things.
+A module to support a simple RSVP form with the options:
 
-For a full description of the module, visit the project page:
-  https://github.com/mistermarco/my_module
+* Attending in person
+* Attending remotely
+* Not able to attend
 
 ## License
 
