@@ -1,9 +1,5 @@
 <?php
 
-define("ATTENDING_IN_PERSON", 1);
-define("ATTENDING_REMOTELY", 2);
-define("NOT ATTENDING", 3);
-
 /**
  * Implementation of hook_block_info()
  * This module creates one block to display RSVP options
