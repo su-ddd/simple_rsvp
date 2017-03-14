@@ -56,7 +56,20 @@ function simple_rsvp_views_data() {
                'filter' => array(
                   'handler' => 'simple_rsvp_filter_handler_oid',
                   ),
-               ),
+             ),
+            'created' => array(
+              'title' => t('RSVP Date'),
+              'help'  => t('Date of RSVP'),
+              'field' => array(
+                  'handler' => 'views_handler_field_date',
+                  ),
+               'filter' => array(
+                  'handler' => 'views_handler_filter_date',
+                  ),
+               'sort' => array(
+                  'handler' => 'views_handler_sort_date',
+                  ),
+            ),
            ),
         );
      return $data;

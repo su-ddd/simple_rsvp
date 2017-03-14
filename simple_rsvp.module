@@ -125,3 +125,13 @@ function simple_rsvp_update_rsvp($uid, $rsvp_option) {
     ))
     ->execute();
 }
+
+/**
+* Implements hook_views_api().
+*/
+function simple_rsvp_views_api() {
+  return array(
+    'api' => 3,
+    'path' => drupal_get_path('module', 'simple_rsvp') . '/views',
+  );
+}
