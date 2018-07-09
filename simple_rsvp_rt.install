@@ -1,0 +1,171 @@
+<?php
+
+/**
+ * @file
+ * Install/Update/Uninstall for rsvp module
+ *
+ */
+
+
+/**
+ * Implements hook_install().
+ * 
+ */
+
+function simple_rsvp_rt_install() {
+  $rsvp_options = array('Thursday, May 31', 'Thursday, June 20', 'I will not be able to attend');
+
+  foreach ($rsvp_options as $option) {
+    db_insert('simple_rsvp_rt_options')
+      ->fields(array(
+        'name' => $option,
+    ))
+    ->execute();
+  }
+}
+
+/**
+ * Implements hook_schema().
+ *
+ */
+
+function simple_rsvp_rt_schema() {
+  $schema = array();
+
+  $schema['simple_rsvp_rt_events'] = array(
+    'description' => 'Events for which people can RSVP.',
+    'fields' => array(
+      'id' => array(
+        'description' => 'The primary identifier or id.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'name' => array(
+        'description' => 'The name of the event.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'max_rsvps' => array(
+        'description' => 'The maximum number of RSVPs allowed for the entire event.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'max_wait_list' => array(
+        'description' => 'The maximum size of the waitlist for the event.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'active' => array(
+        'description' => 'Boolean indicating whether the event is active.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 1,
+      ),
+    ),
+    'primary key' => array('id'),
+  );
+ 
+  $schema['simple_rsvp_rt_options'] = array(
+    'description' => 'RSVP options.',
+    'fields' => array(
+      'id' => array(
+        'description' => 'The primary identifier or id.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'name' => array(
+        'description' => 'The description of the option.',
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+      'weight' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0,
+        'description' => 'The weight of this option in listings and the user interface.',
+      ),
+      'max_rsvps' => array(
+        'description' => 'The maximum number of RSVPs allowed.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'max_wait_list' => array(
+        'description' => 'The maximum size of the waitlist for this option.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'active' => array(
+        'description' => 'Boolean indicating whether the option is active.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 1,
+      ),
+      'eid' => array(
+        'description' => 'The ID of the event',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+    ),
+    'primary key' => array('id'),
+  );
+
+  $schema['simple_rsvp_rt_rsvps'] = array(
+    'description' => 'RSVPs by users.',
+    'fields' => array(
+      'id' => array(
+        'description' => 'The primary identifier or id.',
+        'type' => 'serial',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'oid' => array(
+        'description' => 'The RSVP option id.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'eid' => array(
+        'description' => 'The RSVP event id.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+        'default' => 0,
+      ),
+      'uid' => array(
+        'description' => 'The {users}.uid that submitted the RSVP.',
+        'type' => 'int',
+        'unsigned' => TRUE,
+        'not null' => TRUE,
+      ),
+      'created' => array(
+        'description' => 'The Unix timestamp when the RSVP was submitted.',
+        'type' => 'int',
+        'not null' => TRUE,
+        'default' => 0),
+    ),
+    'indexes' => array(
+      'oid' => array('oid'),
+      'uid' => array('uid'),
+    ),
+    'primary key' => array('id'),
+  );
+
+  return $schema;
+}

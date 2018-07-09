@@ -1,0 +1,8 @@
+name        = Simple RSVP for Roundtable
+description = Simple RSVP system for Roundtable
+core        = 7.x
+version     = 7.x-1.0-dev
+configure   = admin/config/rsvp_rt
+dependencies[] = views
+files[] = views/simple_rsvp_rt_handler_oid.inc
+files[] = views/simple_rsvp_rt_filter_handler_oid.inc
