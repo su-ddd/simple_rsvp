@@ -1,8 +1,0 @@
-name        = Simple RSVP
-description = Simple RSVP system for events
-core        = 7.x
-version     = 7.x-1.0-dev
-configure   = admin/config/rsvp
-dependencies[] = views
-files[] = views/simple_rsvp_handler_oid.inc
-files[] = views/simple_rsvp_filter_handler_oid.inc
